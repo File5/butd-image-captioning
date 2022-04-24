@@ -3,7 +3,7 @@ from torch import nn
 from torch.nn.utils.weight_norm import weight_norm
 from torch.nn.utils.rnn import pad_sequence
 import dgl
-from utils import create_batched_graphs
+from .utils import create_batched_graphs
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

@@ -6,6 +6,16 @@ This Repository is designed with every different model design in a different bra
 
 <h4> TODO: Clean Up the codebase to be contained in a single main branch. Planned to work on this, during the summer holidays </h4>
 
+<h2> Installation as a package </h2>
+<h3> Requirements </h3>
+<pre>
+conda install -c dglteam dgl-cuda10.0=0.4.3post2
+</pre>
+<h3> Installation </h3>
+<pre>
+pip install -e git+https://github.com/File5/butd-image-captioning#egg=butd_image_captioning
+</pre>
+
 <!-- <h2> Results obtained </h2> 
 
 <table class="tg">

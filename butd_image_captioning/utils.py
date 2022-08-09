@@ -337,7 +337,7 @@ def create_batched_graphs(o, om, r, rm, pairs, beam_size=1):
     pairs = pairs.detach().cpu().numpy()
     for b in range(bsz):
         edge_types = []
-        graph = dgl.DGLGraph()
+        graph = dgl.DGLGraph().to(o.device)
         num_objects = om[b].sum().cpu().item()
         num_rels = rm[b].sum().cpu().item()
         # create the object and the relation nodes
@@ -365,7 +365,7 @@ def create_batched_graphs(o, om, r, rm, pairs, beam_size=1):
         all_nodes = np.arange(num_objects + num_rels)
         edge_types += [4] * (num_objects+num_rels)  # self
         graph.add_edges(all_nodes, all_nodes)
-        graph.edata['rel_type'] = torch.tensor(edge_types)
+        graph.edata['rel_type'] = torch.tensor(edge_types, device=o.device)
         # add final graph to the batch
         graphs.append(graph)
     b_graphs = dgl.batch(graphs)
